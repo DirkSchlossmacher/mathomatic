@@ -23,6 +23,10 @@ Requirements:
    ```bash
    make -j4
    ```
+   If you prefer to build using a C++ compiler such as `g++`, run:
+   ```bash
+   make CC=g++ CC_LINK=g++ CFLAGS="-x c" -j4 mathomatic
+   ```
 4. (Optional) Run the test suite:
    ```bash
    cd ..

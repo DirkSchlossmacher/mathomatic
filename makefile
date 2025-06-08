@@ -178,8 +178,13 @@ $(MATHOMATIC_OBJECTS): $(INCLUDES) VERSION
 static: LDFLAGS += -static
 
 # Create the mathomatic executable:
+# Allow using a different compiler for linking when compiling with a C++
+# compiler that requires special flags for C sources.  By default CC_LINK is
+# the same as CC.
+CC_LINK ?= $(CC)
+
 $(AOUT): $(MATHOMATIC_OBJECTS)
-	$(CC) $(CFLAGS) $(LDFLAGS) $+ $(LDLIBS) -o $(AOUT)
+	$(CC_LINK) $(LDFLAGS) $+ $(LDLIBS) -o $(AOUT)
 	@echo
 	@echo ./$(AOUT) successfully created.
 
